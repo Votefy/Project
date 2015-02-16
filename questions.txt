@@ -1,0 +1,3 @@
+1. Is this server overriding the rails server? Is that how you write your own server through rails?
+2. What is awesome_print?!
+3. 

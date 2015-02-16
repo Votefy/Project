@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Votefy</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <div class = "container-fluid">
+  
+    <div class = "row page-header">
+      <h1 class = "col-md-2 text-center">VOTEFY</h1>
+    </div>
+
+<div class="row">
+  <div class= "col-md-4" id="userinput">
+  <form action="/songs" method="post"> <!-- grabbing the user input -->
+    <input type="text" name="artist" placeholder="Artist name" required>
+    <input type="text" name="track" placeholder="Song name" required>
+    <button id="add" class="btn btn-default">ADD</button>
+  </form>
+</div>
+</div> <!-- closes first row -->
+  <ul class="col-md-4">
+    <% playlist.each do |playlist| %>
+      <li id="playlist">
+        <%= playlist[1] %>: <%= playlist[2] %>, ID: <%= playlist[3] %>, votes: <%= playlist[4] %> 
+        <!-- specifying what things from the databse to show. -->
+        <form action="/songs/<%= playlist[0] %>/up" method = "POST">
+          <input name="_method" value="PUT" type="hidden">
+          <button id="up" class="btn btn-default col-md-2" >up</button>
+        </form>
+        <form action="/songs/<%= playlist[0] %>/down" method = "POST">
+          <input name="_method" value="PUT" type="hidden">
+          <button id="button" class="btn btn-default col-md-2" >down</button>
+        </form>
+        <form action="/songs/<%= playlist[0] %>" method="POST">
+          <input name="_method" value="DELETE" type="hidden">
+          <button id="button" class="btn btn-default col-md-2">delete</button>
+        </form>
+      </li>
+    <% end %>
+  </ul>
+</div> <!-- closes container -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
