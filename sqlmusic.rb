@@ -2,14 +2,32 @@ require 'sinatra'
 require 'sqlite3'
 require 'httparty'
 require "awesome_print"
-# require 'pry'
 
 db = SQLite3::Database.new "playlist.db" #connecting to the database.
 
 get '/songs' do
   playlist = db.execute("SELECT * FROM playlist ORDER BY votes DESC") #showing the playlist and ordering it by votes.
-  puts playlist.ai 
-  erb :index, locals: {playlist: playlist} #playlist is out table name.
+  puts playlist.ai
+  erb :index, locals: {playlist: playlist} #playlist is our table name.
+end
+
+get '/songs/play' do
+  list_of_IDs = db.execute("SELECT track_ID, votes FROM playlist ORDER BY votes DESC")
+  final_URL = "https://embed.spotify.com/?uri=spotify:trackset:VOTEFY:"
+  array = []
+  list_of_IDs.each do |id|
+    if id[1] > 0
+      track = id[0]
+      array.push(track)
+    end
+  end
+  # reversed = array.reverse
+  array.each do |song|
+    formatted = song + ","
+    final_URL = final_URL + formatted
+    puts final_URL
+  end
+  redirect '/songs'
 end
 
 post '/songs' do
