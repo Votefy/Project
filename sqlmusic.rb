@@ -12,6 +12,8 @@ get '/songs' do
 end
 
 get '/songs/play' do
+  playlist = db.execute("SELECT * FROM playlist ORDER BY votes DESC")
+  puts playlist.ai
   list_of_IDs = db.execute("SELECT track_ID, votes FROM playlist ORDER BY votes DESC")
   final_URL = "https://embed.spotify.com/?uri=spotify:trackset:VOTEFY:"
   array = []
@@ -21,13 +23,11 @@ get '/songs/play' do
       array.push(track)
     end
   end
-  # reversed = array.reverse
   array.each do |song|
     formatted = song + ","
     final_URL = final_URL + formatted
-    puts final_URL
   end
-  redirect '/songs'
+  erb :show, locals: {playlist: playlist, final_URL: final_URL}
 end
 
 post '/songs' do

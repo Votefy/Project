@@ -16,19 +16,9 @@
 
 <div class="row">
 
-  <div class= "col-md-4" id="userinput">
-  <form action="/songs" method="post"> <!-- grabbing the user input -->
-    <input type="text" name="artist" placeholder="Artist name" required>
-    <input type="text" name="track" placeholder="Song name" required>
-    <button id="add" class="btn"><i class="fa fa-plus fa-2x"></i></button>
-  </form>
-</div>
+
 
 </div> <!-- closes first row -->
-
-  <form action = "/songs/play" method = "GET">
-    <button id="gen" class="btn"><img src="play-green.svg"></button>
-  </form>
 
   <div id="fullplay">
   <ul class="col-md-4">
@@ -37,7 +27,7 @@
         <%= playlist[1] %> - <%= playlist[2] %>
         <p id="votes"><%= playlist[4] %> VOTES </p>
         <!-- specifying what things from the databse to show. -->
-        <form action="/songs/<%= playlist[0] %>/up" method = "POST">
+        <!-- <form action="/songs/<%= playlist[0] %>/up" method = "POST">
           <input name="_method" value="PUT" type="hidden">
           <button id="up" class="btn col-md-2" ><i class="fa fa-arrow-up fa-3x"></i></button>
         </form>
@@ -48,28 +38,26 @@
         <form action="/songs/<%= playlist[0] %>" method="POST">
           <input name="_method" value="DELETE" type="hidden">
           <button id="button" class="btn col-md-2"><i class="fa fa-times fa-3x"></i></button>
-        </form>
+        </form> -->
       </li>
     <% end %>
   </ul>
 </div>
-<iframe id = "iframe"></iframe>
+<iframe frameborder="0" allowtransparency="true" width="622" height="802" src = <%= final_URL%> ></iframe>
 </div> <!-- closes container -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script>
-  var button = document.getElementById ("gen")
-  button.addEventListener("click", function(){
-    var xhr = new XMLHttpRequest();
-      xhr.open("GET", "http://localhost:4567/songs/play");
-      xhr.addEventListener("load", function(){
-        var data = JSON.parse(xhr.responseText);
-        var iframe = document.getElementById("iframe");
-        iframe.src = data
-      });
-  xhr.send();
-  })
-
-  </script>
+  <!-- // var button = document.getElementById ("gen")
+  // button.addEventListener("click", function(){
+  //   var xhr = new XMLHttpRequest();
+  //     xhr.open("GET", "http://localhost:4567/songs/play");
+  //     xhr.addEventListener("load", function(){
+  //       var data = JSON.parse(xhr.responseText);
+  //       var iframe = document.getElementById("iframe");
+  //       iframe.src = data
+  //     });
+  // xhr.send();
+  // })
+  //  -->
 </body>
 </html>
