@@ -10,14 +10,15 @@
 <body>
   <div class = "container-fluid" id="container">
 
-    <div class = "row page-header" id="header">
+    <div id="header">
+      <img src="logo.png" id="logo"></img>
       <h1 class = "col-md-2 text-center" id="headtext">VOTEFY</h1>
     </div>
 
-  <div class= "col-md-4" id="userinput">
+  <div class= "col-md-7" id="userinput">
   <form action="/songs" method="post"> <!-- grabbing the user input -->
-    <input type="text" name="artist" placeholder="Artist name" required>
-    <input type="text" name="track" placeholder="Song name" required>
+    <input id= "artist" type="text" name="artist" placeholder="Artist name" required>
+    <input id="song" type="text" name="track" placeholder="Song name" required>
     <button id="add" class="btn"><i class="fa fa-plus fa-2x"></i></button>
   </form>
 </div>
