@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Votefy</title>
-  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" type="text/css" href="/styleshow.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -11,7 +11,7 @@
   <div class = "container-fluid" id="container">
 
     <div class = "row page-header" id="header">
-      <h1 class = "col-md-2 text-center" id="headtext">VOTEFY</h1>
+      <a href="http://localhost:4567/songs"><h1 class = "col-md-2 text-center" id="headtext">VOTEFY</h1></a>
     </div>
 
 <div class="row">
@@ -25,7 +25,7 @@
     <% playlist.each do |playlist| %>
       <li id="playlist">
         <%= playlist[1] %> - <%= playlist[2] %>
-        <p id="votes"><%= playlist[4] %> VOTES </p>
+        <!-- <p id="votes"><%= playlist[4] %> VOTES </p> -->
         <!-- specifying what things from the databse to show. -->
         <!-- <form action="/songs/<%= playlist[0] %>/up" method = "POST">
           <input name="_method" value="PUT" type="hidden">
@@ -43,7 +43,7 @@
     <% end %>
   </ul>
 </div>
-<iframe frameborder="0" allowtransparency="true" width="622" height="802" src = <%= final_URL%> ></iframe>
+<iframe frameborder="0" allowtransparency="true" width="622" height="600" src = <%= final_URL%> ></iframe>
 </div> <!-- closes container -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

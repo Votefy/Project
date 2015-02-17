@@ -14,8 +14,6 @@
       <h1 class = "col-md-2 text-center" id="headtext">VOTEFY</h1>
     </div>
 
-<div class="row">
-
   <div class= "col-md-4" id="userinput">
   <form action="/songs" method="post"> <!-- grabbing the user input -->
     <input type="text" name="artist" placeholder="Artist name" required>
@@ -24,36 +22,34 @@
   </form>
 </div>
 
-</div> <!-- closes first row -->
-
   <form action = "/songs/play" method = "GET">
     <button id="gen" class="btn"><img src="play-green.svg"></button>
   </form>
 
   <div id="fullplay">
-  <ul class="col-md-4">
+  <ul class="col-md-6">
     <% playlist.each do |playlist| %>
       <li id="playlist">
-        <%= playlist[1] %> - <%= playlist[2] %>
-        <p id="votes"><%= playlist[4] %> VOTES </p>
+        <p id="name"><%= playlist[1] %> - <%= playlist[2] %></p>
+        <p id="votes"><%= playlist[4] %> VOTE(S) </p>
         <!-- specifying what things from the databse to show. -->
         <form action="/songs/<%= playlist[0] %>/up" method = "POST">
           <input name="_method" value="PUT" type="hidden">
-          <button id="up" class="btn col-md-2" ><i class="fa fa-arrow-up fa-3x"></i></button>
+          <button id="button" class="btn" ><i class="fa fa-arrow-up fa-3x"></i></button>
         </form>
         <form action="/songs/<%= playlist[0] %>/down" method = "POST">
           <input name="_method" value="PUT" type="hidden">
-          <button id="button" class="btn col-md-2" ><i class="fa fa-arrow-down fa-3x"></i></button>
+          <button id="button" class="btn" ><i class="fa fa-arrow-down fa-3x"></i></button>
         </form>
         <form action="/songs/<%= playlist[0] %>" method="POST">
           <input name="_method" value="DELETE" type="hidden">
-          <button id="button" class="btn col-md-2"><i class="fa fa-times fa-3x"></i></button>
+          <button id="button" class="btn"><i class="fa fa-times fa-3x"></i></button>
         </form>
       </li>
     <% end %>
   </ul>
 </div>
-<iframe id = "iframe"></iframe>
+
 </div> <!-- closes container -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
