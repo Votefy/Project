@@ -2,45 +2,51 @@
 <html>
 <head>
   <title>Votefy</title>
-  <form action = "/songs/play" method = "GET">
-    <button>Generate!</button>
-  </form>
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
-  <div class = "container-fluid">
+  <div class = "container-fluid" id="container">
 
-    <div class = "row page-header">
+    <div class = "row page-header" id="header">
       <h1 class = "col-md-2 text-center">VOTEFY</h1>
     </div>
 
 <div class="row">
+
   <div class= "col-md-4" id="userinput">
   <form action="/songs" method="post"> <!-- grabbing the user input -->
     <input type="text" name="artist" placeholder="Artist name" required>
     <input type="text" name="track" placeholder="Song name" required>
-    <button id="add" class="btn btn-default">ADD</button>
+    <button id="add" class="btn"><i class="fa fa-plus fa-2x"></i></button>
   </form>
 </div>
+
 </div> <!-- closes first row -->
+
+  <form action = "/songs/play" method = "GET">
+    <button id="gen" class="btn"><b>Generate Playlist</b></button>
+  </form>
+
   <ul class="col-md-4">
     <% playlist.each do |playlist| %>
       <li id="playlist">
-        <%= playlist[1] %>: <%= playlist[2] %>, votes: <%= playlist[4] %>
+        <%= playlist[1] %> - <%= playlist[2] %>
+        <p id="votes"><%= playlist[4] %> VOTES </p>
         <!-- specifying what things from the databse to show. -->
         <form action="/songs/<%= playlist[0] %>/up" method = "POST">
           <input name="_method" value="PUT" type="hidden">
-          <button id="up" class="btn btn-default col-md-2" >up</button>
+          <button id="up" class="btn col-md-2" ><i class="fa fa-arrow-up fa-3x"></i></button>
         </form>
         <form action="/songs/<%= playlist[0] %>/down" method = "POST">
           <input name="_method" value="PUT" type="hidden">
-          <button id="button" class="btn btn-default col-md-2" >down</button>
+          <button id="button" class="btn col-md-2" ><i class="fa fa-arrow-down fa-3x"></i></button>
         </form>
         <form action="/songs/<%= playlist[0] %>" method="POST">
           <input name="_method" value="DELETE" type="hidden">
-          <button id="button" class="btn btn-default col-md-2">delete</button>
+          <button id="button" class="btn col-md-2"><i class="fa fa-times fa-3x"></i></button>
         </form>
       </li>
     <% end %>
