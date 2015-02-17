@@ -1,5 +1,5 @@
 #header {
-	color: #75FF00;
+	color: #648F00;
 	border-bottom: 4px #292929 solid;
 }
 
@@ -10,11 +10,12 @@
 #userinput {
 	margin-left: 30px;
 	margin-bottom: 10px;
+	color: black;
 }
 
 #gen {
 	color: black;
-	background-color: #75FF00;
+	background-color: #648F00;
 	margin-left: 30px;
 	margin-bottom: 20px;
 	width: 381px;
@@ -25,7 +26,7 @@
 #add {
 	margin-bottom: 5px;
 	background-color: #292929;
-	color: #75FF00;
+	color: #648F00;
 	width: 60px;
 	height: 40px;
 	/*border-left: 2px #75FF00 solid;
@@ -51,7 +52,7 @@
 #up {
 /*	margin-top: 5px;*/
 	background-color: black;
-	color: #75FF00;
+	color: #648F00;
 	width: 125px;
 	height: 60px;
 	/*border-left: 2px #75FF00 solid;
@@ -63,7 +64,7 @@
 	/*margin-top: 5px;*/
 	background-color: black;
 	border-color: black;
-	color: #75FF00;
+	color: #648F00;
 	width: 125px;
 	height: 60px;
 /*	border-left: 2px #75FF00 solid;
