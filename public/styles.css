@@ -68,6 +68,11 @@ body {
 	height: 60px;
 }
 
+#add:hover {
+    background-color: #1C1C1F;
+    color: #648F00;
+}
+
 #fullplay{
 	height: 470px;
 	overflow:scroll;
@@ -104,4 +109,9 @@ body {
 	width: 128px;
 	height: 60px;
 	float: right;
+}
+
+#button:hover {
+    background-color: #648F00;
+    color: #1C1C1F;
 }
