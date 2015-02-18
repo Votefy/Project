@@ -10,7 +10,7 @@ body {
 #container {
 	background-color: black;
     color: white;
-    height: 750px;
+    height: 900px;
     font-family: "ProximaNova";
 }
 
@@ -28,12 +28,12 @@ body {
 
 #logo {
 	float: left;
-	margin-left: 35px;
+	margin-left: 60px;
 	margin-top: 10px;
 }
 
 #userinput {
-	margin-left: 25px;
+	margin-left: 50px;
 	margin-top: 30px;
 	margin-bottom: 10px;
 	color: black;
@@ -53,10 +53,10 @@ body {
 #gen {
 	background-color: black;
 	margin-bottom: 20px;
-	width: 300px;
-	height: 88px;
+	width: 318px;
+	height: 103px;
 	float: right;
-	margin-right: 80px;
+	margin-right: 140px;
 }
 
 #gen:hover {
@@ -86,12 +86,12 @@ body {
 
 #playlist {
 	height: 100px;
-	width: 1300px;
+	width: 1200px;
 	list-style-type: none;
-	font-size: 35px;
+	font-size: 27px;
 	background-color: #1C1C1F;
 	padding-top: 25px;
-	margin-left: 20px;
+	margin-left: 50px;
 	padding-left: 20px;
 	border-bottom: 2px black solid;
 }
@@ -101,7 +101,7 @@ body {
 	float: right;
 	margin-right: 10px;
 	width: 100px;
-	margin-top: -22px;
+	margin-top: -24px;
 	margin-left: 5px;
 }
 
