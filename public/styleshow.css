@@ -40,6 +40,11 @@ body {
 	height: 100px;
 }
 
+#logo:hover {
+    background-color: black;
+    opacity: 0.6;
+}
+
 #fullplay{
 	height: 600px;
 	overflow-y:scroll;
@@ -52,7 +57,7 @@ body {
 	list-style-type: none;
 	font-size: 30px;
 	background-color: #1C1C1F;
-	padding-top: 20px;
+	padding-top: 25px;
 	margin-left: 20px;
 	padding-left: 20px;
 	border-bottom: 2px black solid;
