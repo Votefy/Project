@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sqlite3'
 require 'httparty'
 require "awesome_print"
+require 'json'
 
 db = SQLite3::Database.new "playlist.db" #connecting to the database.
 
@@ -41,6 +42,11 @@ post '/songs' do
     #this is is adding what we want into the db.
     playlist = db.execute("INSERT INTO playlist (artist, track, track_ID) VALUES (?, ?, ?)", artist, track, track_ID)
     redirect '/songs'
+  else
+    redirect '/songs'
+    content_type :json
+data = {msg: "Spotify does not recognize this song."}
+data.to_json
   end
 end
 

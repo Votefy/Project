@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Votefy</title>
+
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -22,7 +23,7 @@
     <button id="add" class="btn"><i class="fa fa-plus fa-2x"></i></button>
   </form>
 </div>
-
+ <h3><%= params[:id] %></h3>
   <form action = "/songs/play" method = "GET">
     <button id="gen" class="btn"><img src="gen.png"></button>
   </form>
@@ -55,18 +56,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script>
-  var button = document.getElementById ("gen")
-  button.addEventListener("click", function(){
-    var xhr = new XMLHttpRequest();
-      xhr.open("GET", "http://localhost:4567/songs/play");
-      xhr.addEventListener("load", function(){
-        var data = JSON.parse(xhr.responseText);
-        var iframe = document.getElementById("iframe");
-        iframe.src = data
-      });
-  xhr.send();
-  })
-
+    var button = document.getElementById("add");
+    button.addEventListener("click", function(){
+      var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:4567/songs");
+        xhr.addEventListener("load", function(){
+          var response = xhr.responseText;
+          response = JSON.parse(response);
+          console.log("response");
+          var message = document.querySelector("h3");
+          h3.innerHTML = response;
+      })
+      xhr.send();
+    })
   </script>
 </body>
 </html>
