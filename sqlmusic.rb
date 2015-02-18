@@ -45,7 +45,7 @@ post '/songs' do
     redirect '/songs'
   else
     content_type :json
-    data = "Spotify does not recognize this song."
+    data = "Spotify does not recognize this song. Please try again."
     data.to_json
   end
 end
