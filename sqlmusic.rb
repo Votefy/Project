@@ -35,9 +35,11 @@ post '/songs' do
   #the / is getting us out of quotes.
   #this is making the API call and getting that info.
   if response["tracks"]["total"] != 0
-    track_ID = response["tracks"]["items"][0]["id"];
+    artist = response["tracks"]["items"][0]["artists"][0]["name"]
+    track = response["tracks"]["items"][0]["name"]
+    track_ID = response["tracks"]["items"][0]["id"]
     #this is is adding what we want into the db.
-    playlist = db.execute("INSERT INTO playlist (artist, track, track_ID) VALUES (?, ?, ?)", params["artist"], params["track"], track_ID)
+    playlist = db.execute("INSERT INTO playlist (artist, track, track_ID) VALUES (?, ?, ?)", artist, track, track_ID)
     redirect '/songs'
   end
 end
