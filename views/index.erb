@@ -22,6 +22,7 @@
     <input id="song" type="text" name="track" placeholder="Song name" required>
     <button id="add" class="btn"><i class="fa fa-plus fa-2x"></i></button>
   </form>
+  <h3></h3>
 </div>
  <h3><%= params[:id] %></h3>
   <form action = "/songs/play" method = "GET">
@@ -57,15 +58,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script>
     var button = document.getElementById("add");
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function(event){
+      event.preventDefault(); //this is overiding the form stuff.
       var xhr = new XMLHttpRequest();
         xhr.open("POST", "http://localhost:4567/songs");
         xhr.addEventListener("load", function(){
           var response = xhr.responseText;
           response = JSON.parse(response);
-          console.log("response");
-          var message = document.querySelector("h3");
-          h3.innerHTML = response;
+          console.log(response);
+          var message = document.querySelector("h3")
+          message.style.color = "white";
+          message.innerHTML = response;
       })
       xhr.send();
     })
