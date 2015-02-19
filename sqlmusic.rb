@@ -3,6 +3,7 @@ require 'sqlite3'
 require 'httparty'
 require "awesome_print"
 require 'pry'
+require 'unicorn'
 
 db = SQLite3::Database.new "playlist.db" #connecting to the database.
 
