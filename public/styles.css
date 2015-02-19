@@ -96,10 +96,14 @@ body {
 	border-bottom: 2px black solid;
 }
 
+#name{
+	width: 612px;
+}
+
 #album {
 	width: 60px;
 	margin-top: -5px;
-	margin-left: -15px;
+	margin-left: -10px;
 }
 
 #votes {
