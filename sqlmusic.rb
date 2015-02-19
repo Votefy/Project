@@ -2,20 +2,19 @@ require 'sinatra'
 require 'sqlite3'
 require 'httparty'
 require "awesome_print"
-require 'json'
 require 'pry'
 
 db = SQLite3::Database.new "playlist.db" #connecting to the database.
 
 get '/songs' do
   playlist = db.execute("SELECT * FROM playlist ORDER BY votes DESC") #showing the playlist and ordering it by votes.
-  puts playlist.ai
+  # puts playlist.ai
   erb :index, locals: {playlist: playlist} #playlist is our table name.
 end
 
 get '/songs/play' do
   playlist = db.execute("SELECT * FROM playlist ORDER BY votes DESC")
-  puts playlist.ai
+  # puts playlist.ai
   list_of_IDs = db.execute("SELECT track_ID, votes FROM playlist ORDER BY votes DESC")
   final_URL = "https://embed.spotify.com/?uri=spotify:trackset:VOTEFY:"
   array = []
@@ -37,25 +36,24 @@ post '/songs' do
   #the / is getting us out of quotes.
   #this is making the API call and getting that info.
   if response["tracks"]["total"] != 0
-    artist = response["tracks"]["items"][0]["artists"][0]["name"]
-    track = response["tracks"]["items"][0]["name"]
-    track_ID = response["tracks"]["items"][0]["id"]
-    #this is is adding what we want into the db.
-    playlist = db.execute("INSERT INTO playlist (artist, track, track_ID) VALUES (?, ?, ?)", artist, track, track_ID)
+    path = response["tracks"]["items"][0]
+    artist = path["artists"][0]["name"]
+    track = path["name"]
+    track_ID = path["id"] #this is is adding what we want into the db.
+    image = path["album"]["images"][1]["url"]
+    playlist = db.execute("INSERT INTO playlist (artist, track, track_ID, image) VALUES (?, ?, ?, ?)", artist, track, track_ID, image)
     redirect '/songs'
   else
-    content_type :json
-    data = "Spotify does not recognize this song. Please try again."
-    data.to_json
+    redirect '/songs'
   end
 end
 
-put '/songs/:id/up' do
+put '/songs/:id/up' do #voting up
   playlist = db.execute("UPDATE playlist SET votes=(votes + 1) WHERE id=?",params[:id]) #we are adding the votes right here.
   redirect '/songs'
 end
 
-put '/songs/:id/down' do
+put '/songs/:id/down' do #voting down
   playlist = db.execute("UPDATE playlist SET votes=(votes - 1) WHERE id=?",params[:id])
   redirect '/songs'
 end

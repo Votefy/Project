@@ -33,9 +33,9 @@
   <ul class="col-md-6">
     <% playlist.each do |playlist| %>
       <li id="playlist">
-        <p id="name"><%= playlist[1] %> - <%= playlist[2] %></p>
+        <p id="name"><img id = "album" src = <%=playlist[5] %>>&nbsp;&nbsp;&nbsp;&nbsp;<%= playlist[1] %> - <%= playlist[2] %></p>
         <p id="votes"><%= playlist[4] %> VOTE(S) </p>
-        <!-- specifying what things from the databse to show. -->
+        <!-- specifying what things from the database to show. -->
         <form action="/songs/<%= playlist[0] %>/up" method = "POST">
           <input name="_method" value="PUT" type="hidden">
           <button id="button" class="btn" ><i class="fa fa-arrow-up fa-3x"></i></button>
@@ -56,22 +56,22 @@
 </div> <!-- closes container -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script>
-    var button = document.getElementById("add");
-    button.addEventListener("click", function(event){
-      event.preventDefault(); //this is overiding the form stuff.
-      var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:4567/songs");
-        xhr.addEventListener("load", function(){
-          var response = xhr.responseText;
-          response = JSON.parse(response);
-          console.log(response);
-          var message = document.querySelector("h3")
-          message.style.color = "white";
-          message.innerHTML = response;
-      })
-      xhr.send();
-    })
-  </script>
+  <!-- // <script> -->
+  <!-- //   var button = document.getElementById("add");
+  //   button.addEventListener("click", function(event){
+  //     event.preventDefault(); //this is overiding the form stuff.
+  //     var xhr = new XMLHttpRequest();
+  //       xhr.open("POST", "http://localhost:4567/songs");
+  //       xhr.addEventListener("load", function(){
+  //         var response = xhr.responseText;
+  //         response = JSON.parse(response);
+  //         console.log(response);
+  //         var message = document.querySelector("h3")
+  //         message.style.color = "white";
+  //         message.innerHTML = response;
+  //     })
+  //     xhr.send();
+  //   })
+  // </script> -->
 </body>
 </html>

@@ -88,12 +88,18 @@ body {
 	height: 100px;
 	width: 1200px;
 	list-style-type: none;
-	font-size: 27px;
+	font-size: 23px;
 	background-color: #1C1C1F;
 	padding-top: 25px;
 	margin-left: 50px;
 	padding-left: 20px;
 	border-bottom: 2px black solid;
+}
+
+#album {
+	width: 60px;
+	margin-top: -5px;
+	margin-left: -15px;
 }
 
 #votes {
@@ -106,7 +112,7 @@ body {
 }
 
 #button {
-	margin-left: 3px;
+	margin-left: 13px;
 	margin-top: -59px;
 	margin-right: 10px;
 	background-color: black;
